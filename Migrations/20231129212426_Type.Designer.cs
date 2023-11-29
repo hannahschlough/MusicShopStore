@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MusicShopStore.Data;
 
@@ -10,9 +11,11 @@ using MusicShopStore.Data;
 namespace MusicShopStore.Migrations
 {
     [DbContext(typeof(MusicShopStoreContext))]
-    partial class MusicShopStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20231129212426_Type")]
+    partial class Type
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

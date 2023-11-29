@@ -11,6 +11,8 @@ namespace MusicShopStore.Models
 
         public required string Genre { get; set; }
 
+        public required string Type { get; set; }
+
         public required decimal Price { get; set; }
 
     }
