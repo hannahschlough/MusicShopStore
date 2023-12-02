@@ -9,6 +9,14 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<form asp-controller="Musics" asp-action="Index">
+    <p>
+        Genre: <input type="text" name="SearchGenre" />
+        Artist: <input type="text" name="SearchArtist" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
 <table class="table">
     <thead>
         <tr>

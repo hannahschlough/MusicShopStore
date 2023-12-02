@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Payment</h2>
+
+<form>
+    <label for="Credit Card Number">Credit Card Number</label>
+    <input type="number" id="cc-number" name="creditcardnumber"
+           pattern="[0-9]" title="Credit Card Number"><br><br>
+    
+
+    <label for="Expiration Date">Expiration Date</label>
+    <input type="number" id="expdate" name="expdate"
+           pattern="[0-9]{4}" title="Exp Date"><br><br>
+    
+
+    <label for="CVV">CVV</label>
+    <input type="number" id="cvv" name="cvv"
+           pattern="[0-9]{3}" title="CVV"><br><br>
+    <input type="submit">
+</form>
