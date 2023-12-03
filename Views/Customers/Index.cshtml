@@ -1,0 +1,67 @@
+﻿@model IEnumerable<MusicShopStore.Models.Music>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Welcome!</h1>
+
+<form asp-controller="Customers" asp-action="Index">
+    <p>
+        Genre: <input type="text" name="SearchGenre" />
+        Artist: <input type="text" name="SearchArtist" />
+        <input type="submit" value="Filter" />
+        <input type="submit" value="Add to Cart" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Artist)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                 <input type="checkbox"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Artist)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            
+        </tr>
+}
+    </tbody>
+</table>
