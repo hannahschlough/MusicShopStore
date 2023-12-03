@@ -5,15 +5,15 @@
 }
 
 <h1>Welcome!</h1>
-<style>
-    .btn-text-right{
-        text-align: right;
-    }
-</style>
 
-<div class="btn-text-right">
-    <button type="button" class="btn btn-primary">Right Align Button</button>
-</div>
+<form asp-controller="Customers" asp-action="Index">
+    <p>
+        Genre: <input type="text" name="SearchGenre" />
+        Artist: <input type="text" name="SearchArtist" />
+        <input type="submit" value="Filter" />
+        <input type="submit" value="Add to Cart" />
+    </p>
+</form>
 
 <table class="table">
     <thead>
