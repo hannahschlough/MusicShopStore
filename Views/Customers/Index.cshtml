@@ -60,6 +60,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
+
+
+                <td>
+                    
+                    <a asp-action="ShoppingCart" asp-route-id="@item.MusicId">Add to Cart</a> |
+                 
+                </td>
             
         </tr>
 }
