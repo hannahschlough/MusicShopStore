@@ -1,18 +1,27 @@
-﻿@model IEnumerable<MusicShopStore.Models.Music>
+﻿@model MusicShopStore.Models.MusicGenreModel
 
 @{
     ViewData["Title"] = "Index";
+
+   
 }
 
-<h1>Welcome!</h1>
+<h1>Browse Music</h1>
 
-<form asp-controller="Customers" asp-action="Index">
-    <p>
-        Genre: <input type="text" name="SearchGenre" />
-        Artist: <input type="text" name="SearchArtist" />
+<form asp-controller="Customers" asp-action="Index" method="get">
+   <p>
+        Filter by Genre: <select asp-for="MusicGenre" asp-items="Model.Genres">
+            <option value="">All</option>
+       </select>
+
+        Filter by Artist:
+        <select asp-for="MusicArtist" asp-items="Model.Artists">
+            <option value="">All</option>
+        </select>
+
         <input type="submit" value="Filter" />
-        <input type="submit" value="Add to Cart" />
-    </p>
+
+   </p>
 </form>
 
 <table class="table">
@@ -22,25 +31,25 @@
 
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                @Html.DisplayNameFor(model => model.Musics![0].Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Artist)
+                @Html.DisplayNameFor(model => model.Musics![0].Artist)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Genre)
+                @Html.DisplayNameFor(model => model.Musics![0].Genre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Type)
+                @Html.DisplayNameFor(model => model.Musics![0].Type)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                @Html.DisplayNameFor(model => model.Musics![0].Price)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Musics!) {
         <tr>
             <td>
                  <input type="checkbox"/>

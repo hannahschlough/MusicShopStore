@@ -20,28 +20,43 @@ namespace MusicShopStore.Controllers
         }
 
         // GET: Customers
-        public async Task<IActionResult> Index(string SearchGenre, string SearchArtist)
+        public async Task<IActionResult> Index(string musicGenre, string musicArtist)
         {
             /*
               return _context.Music != null ? 
                           View(await _context.Music.ToListAsync()) :
                           Problem("Entity set 'MusicShopStoreContext.Music'  is null.");
             */
+
+            IQueryable<string> genreQuery = from m in _context.Music
+                                            orderby m.Genre
+                                            select m.Genre;
+
+            IQueryable<string> artistQuery = from m in _context.Music
+                                            orderby m.Artist
+                                            select m.Artist;
+
             var showAll = from m in _context.Music
                           select m;
 
-            if (!String.IsNullOrEmpty(SearchGenre))
+          if (!string.IsNullOrEmpty(musicGenre))
             {
-
-                showAll = showAll.Where(s => s.Genre.Contains(SearchGenre));
-            }
-            if (!String.IsNullOrEmpty(SearchArtist))
-            {
-
-                showAll = showAll.Where(s => s.Artist.Contains(SearchArtist));
+                showAll = showAll.Where(s => s.Genre == musicGenre);
             }
 
-            return View(await showAll.ToListAsync());
+            if (!string.IsNullOrEmpty(musicArtist))
+            {
+                showAll = showAll.Where(s => s.Artist == musicArtist);
+            }
+
+            var musicGenreArtistVM = new MusicGenreModel
+            {
+                Genres = new SelectList(await genreQuery.Distinct().ToListAsync()),
+                Artists = new SelectList(await artistQuery.Distinct().ToListAsync()),
+                Musics = await showAll.ToListAsync()
+            };
+            
+            return View(musicGenreArtistVM);
 
         }
 
