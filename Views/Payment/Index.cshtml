@@ -7,19 +7,19 @@
 <form>
     <label for="Credit Card Number">Credit Card Number</label>
     <input type="number" id="cc-number" name="creditcardnumber"
-           pattern="[0-9]" title="Credit Card Number" min="16" max="16"><br><br>
+           pattern="[0-9]{16}" title="Credit Card Number" ><br><br>
     
 
     <label for="Expiration Date">Expiration Date</label>
     <input type="number" id="expdate" name="expdate"
-           pattern="[0-9]{4}" title="Exp Date" min="4" max="4"><br><br>
+           pattern="[0-9]{4}" title="Exp Date"><br><br>
     
 
     <label for="CVV">CVV</label>
     <input type="number" id="cvv" name="cvv"
-           pattern="[0-9]{3}" title="CVV" min="3" max="3"><br><br>
+           pattern="[0-9]{3}" title="CVV"><br><br>
     <input type="submit">
-    <input type="submit" value="Submit (w/o validation" onclick="location.href='@Url.Action("Index", "Success")'" />
+    <input type="submit" onclick="location.href='@Url.Action("Index", "Success")'" />
 
 </form>
 
