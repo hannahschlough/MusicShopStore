@@ -20,11 +20,29 @@ namespace MusicShopStore.Controllers
         }
 
         // GET: Musics
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string SearchGenre, string SearchArtist)
         {
+            /*
               return _context.Music != null ? 
                           View(await _context.Music.ToListAsync()) :
                           Problem("Entity set 'MusicShopStoreContext.Music'  is null.");
+            */
+            var showAll = from m in _context.Music
+                          select m;
+
+            if (!String.IsNullOrEmpty(SearchGenre))
+            {
+
+                showAll = showAll.Where(s => s.Genre.Contains(SearchGenre));
+            }
+            if (!String.IsNullOrEmpty(SearchArtist))
+            {
+
+                showAll = showAll.Where(s => s.Artist.Contains(SearchArtist));
+            }
+
+            return View(await showAll.ToListAsync());
+
         }
 
         // GET: Musics/Details/5
