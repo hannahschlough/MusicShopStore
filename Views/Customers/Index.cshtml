@@ -28,9 +28,6 @@
     <thead>
         <tr>
             <th>
-
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Musics![0].Title)
             </th>
             <th>
@@ -51,9 +48,7 @@
     <tbody>
 @foreach (var item in Model.Musics!) {
         <tr>
-            <td>
-                 <input type="checkbox"/>
-            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>

@@ -6,27 +6,23 @@ namespace MusicShopStore.Models
     {
         public required int MusicId { get; set; }
 
-        [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
+        [StringLength(60, MinimumLength = 3)]
         [Required]
-        [StringLength(30)]
         public required string Title { get; set; }
 
-        [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
+        [StringLength(60, MinimumLength = 3)]
         [Required]
-        [StringLength(30)]
         public required string Artist { get; set; }
 
-        [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
+        [StringLength(60, MinimumLength = 3)]
         [Required]
-        [StringLength(30)]
         public required string Genre { get; set; }
 
-        [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
+        [StringLength(60, MinimumLength = 3)]
         [Required]
-        [StringLength(30)]
         public required string Type { get; set; }
 
-        [Range(1, 100)]
+        [Range(0, 100)]
         [DataType(DataType.Currency)]
         public required decimal Price { get; set; }
 
