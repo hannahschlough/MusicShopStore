@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using MusicShopStore.Models;
 
 namespace MusicShopStore.Controllers
 {
@@ -6,7 +8,9 @@ namespace MusicShopStore.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            
+                return View();
+           
         }
     }
 }

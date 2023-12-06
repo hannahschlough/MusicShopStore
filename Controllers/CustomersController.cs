@@ -77,6 +77,41 @@ namespace MusicShopStore.Controllers
 
             return View(music);
         }
+
+        public async Task<IActionResult> ShoppingCart(int? id)
+        {
+            if (id == null || _context.Music == null)
+            {
+                return NotFound();
+            }
+
+            var music = await _context.Music
+                .FirstOrDefaultAsync(m => m.MusicId == id);
+
+
+            if (music == null)
+            {
+                return NotFound();
+            }
+
+
+            return View(music);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("MusicId,Title,Artist,Genre,Type,Price")] Music music)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(music);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(music);
+        }
+
         private bool MusicExists(int id)
         {
           return (_context.Music?.Any(e => e.MusicId == id)).GetValueOrDefault();
